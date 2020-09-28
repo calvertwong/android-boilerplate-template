@@ -1,3 +1,3 @@
-include(":app", ":navigation", ":core")
+include(":app", ":navigation", ":core", ":network")
 
 rootProject.name = "AndroidBoilerplateTemplate"

@@ -82,7 +82,7 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
-          body: "<h2>Build job of ${{github.repository}} <b>SUCCEEDED</b>.</h2><br/><br/>Generated Debug artifact----------<b>${{env.HAS_DEBUG_ARTIFACT}}</b><br/><br/>Generated Release artifact----------<b>${{env.HAS_RELEASE_ARTIFACT}}</b><br/><br/>Build triggered by <b>${{github.actor}}</b>"
+          body: "<h2>Build job of ${{github.repository}} <mark>SUCCEEDED</mark>.</h2><br/><br/>Generated Debug artifact----------<b>${{env.HAS_DEBUG_ARTIFACT}}</b><br/><br/>Generated Release artifact----------<b>${{env.HAS_RELEASE_ARTIFACT}}</b><br/><br/>Build triggered by <b>${{github.actor}}</b>"
           to: ${{secrets.MAIL_USERNAME}}
           from: ${{secrets.MAIL_USERNAME}}
           content_type: text/html
@@ -96,7 +96,7 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
-          body: "<h2>Build job of ${{github.repository}} <b>FAILED</b>.</h2><br/><br/>Generated Debug artifact----------<b>${{env.HAS_DEBUG_ARTIFACT}}</b><br/><br/>Generated Release artifact----------<b>${{env.HAS_RELEASE_ARTIFACT}}</b><br/><br/>Build triggered by <b>${{github.actor}}</b>"
+          body: "<h2>Build job of ${{github.repository}} <mark>FAILED</mark>.</h2><br/><br/>Generated Debug artifact----------<b>${{env.HAS_DEBUG_ARTIFACT}}</b><br/><br/>Generated Release artifact----------<b>${{env.HAS_RELEASE_ARTIFACT}}</b><br/><br/>Build triggered by <b>${{github.actor}}</b>"
           to: ${{secrets.MAIL_USERNAME}}
           from: ${{secrets.MAIL_USERNAME}}
           content_type: text/html
