@@ -1,3 +1,3 @@
 include(":app", ":navigation", ":core")
 
-rootProject.name = "SimpleBusinessCard"
+rootProject.name = "AndroidBoilerplateTemplate"

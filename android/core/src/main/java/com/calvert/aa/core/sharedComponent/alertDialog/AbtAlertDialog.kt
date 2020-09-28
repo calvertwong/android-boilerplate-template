@@ -7,7 +7,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 // We can create an alert dialog without using a dialog fragment but when you rotate the screen
 // the alert dialog will be removed unlike a dialog fragment which has a lifecycle
-class SbcAlertDialog(private val alertDialogDTO: AlertDialogDTO) : DialogFragment() {
+class AbtAlertDialog(private val alertDialogDTO: AlertDialogDTO) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = MaterialAlertDialogBuilder(requireContext())

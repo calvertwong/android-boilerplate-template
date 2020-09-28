@@ -1,4 +1,4 @@
-package com.calvert.aa.simplebusinesscard
+package com.calvert.aa.androidboilerplatetemplate
 
 import org.junit.Test
 

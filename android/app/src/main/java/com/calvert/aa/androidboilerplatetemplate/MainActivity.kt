@@ -1,4 +1,4 @@
-package com.calvert.aa.simplebusinesscard
+package com.calvert.aa.androidboilerplatetemplate
 
 import android.app.Application
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.calvert.aa.simplebusinesscard.ui.debugdrawer.ServerOptionModule
+import com.calvert.aa.androidboilerplatetemplate.ui.debugdrawer.ServerOptionModule
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar

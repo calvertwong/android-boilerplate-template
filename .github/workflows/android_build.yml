@@ -37,13 +37,14 @@ jobs:
       # Debug APK
 
       - name: Build Debug APK
+        working-directory: android
         run: ./gradlew assembleDebug --stacktrace
 
       - name: Get Debug APK
         uses: actions/upload-artifact@v1
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: ./android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Set HAS_DEBUG_ARTIFACT to true
         run: echo '::set-env name=HAS_DEBUG_ARTIFACT::true'
@@ -51,12 +52,13 @@ jobs:
         # Release APK
 
       - name: Build Signed APK
+        working-directory: android
         run: ./gradlew assembleRelease --stacktrace
 
       - name: Sign Android release
         uses: r0adkll/sign-android-release@v1
         with:
-          releaseDirectory: app/build/outputs/apk/release
+          releaseDirectory: ./android/app/build/outputs/apk/release
           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
@@ -75,25 +77,26 @@ jobs:
         if: ${{success()}}
         uses: dawidd6/action-send-mail@v2
         with:
-          server_address: smtp.gmail.com
-          server_port: 465
+          server_address: smtp.office365.com
+          server_port: 587
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
-          body: "Build job of ${{github.repository}} completed.\n\nGenerated Debug artifact----------${{env.HAS_DEBUG_ARTIFACT}}\n\nGenerated Release artifact----------${{env.HAS_RELEASE_ARTIFACT}}\n\nBuild triggered by <b>${{github.actor}}</b>"
+          body: "<h2>Build job of ${{github.repository}} <b>SUCCEEDED</b>.</h2><br/><br/>Generated Debug artifact----------<b>${{env.HAS_DEBUG_ARTIFACT}}</b><br/><br/>Generated Release artifact----------<b>${{env.HAS_RELEASE_ARTIFACT}}</b><br/><br/>Build triggered by <b>${{github.actor}}</b>"
           to: ${{secrets.MAIL_USERNAME}}
           from: ${{secrets.MAIL_USERNAME}}
+          content_type: text/html
 
       - name: Send email indicate failure
         if: ${{failure() || cancelled()}}
         uses: dawidd6/action-send-mail@v2
         with:
-          server_address: smtp.gmail.com
-          server_port: 465
+          server_address: smtp.office365.com
+          server_port: 587
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
-          body: "Build job of ${{github.repository}} is incomplete.\n\nGenerated Debug artifact----------${{env.HAS_DEBUG_ARTIFACT}}\n\nGenerated Release artifact----------${{env.HAS_RELEASE_ARTIFACT}}\n\nBuild triggered by <b>${{github.actor}}</b>"
+          body: "<h2>Build job of ${{github.repository}} <b>FAILED</b>.</h2><br/><br/>Generated Debug artifact----------<b>${{env.HAS_DEBUG_ARTIFACT}}</b><br/><br/>Generated Release artifact----------<b>${{env.HAS_RELEASE_ARTIFACT}}</b><br/><br/>Build triggered by <b>${{github.actor}}</b>"
           to: ${{secrets.MAIL_USERNAME}}
           from: ${{secrets.MAIL_USERNAME}}
-          
+          content_type: text/html

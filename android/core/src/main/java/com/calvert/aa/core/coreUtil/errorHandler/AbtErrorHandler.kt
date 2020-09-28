@@ -2,7 +2,7 @@ package com.calvert.aa.core.coreUtil.errorHandler
 
 import android.content.DialogInterface
 import com.calvert.aa.core.sharedComponent.alertDialog.AlertDialogDTO
-import com.calvert.aa.core.sharedComponent.alertDialog.SbcAlertDialog
+import com.calvert.aa.core.sharedComponent.alertDialog.AbtAlertDialog
 import com.squareup.moshi.Moshi
 import okhttp3.ResponseBody
 import org.koin.core.KoinComponent
@@ -10,7 +10,7 @@ import org.koin.core.inject
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
 
-class SbcErrorHandler : KoinComponent {
+class AbtErrorHandler : KoinComponent {
 
     private val moshi: Moshi by inject(named("provideMoshi"))
 
@@ -19,8 +19,8 @@ class SbcErrorHandler : KoinComponent {
         message: String?,
         positiveButtonText: String?,
         positiveAction: DialogInterface.OnClickListener?
-    ): SbcAlertDialog {
-        val alertDialog: SbcAlertDialog by inject(named("provideAlertDialog")) {
+    ): AbtAlertDialog {
+        val alertDialog: AbtAlertDialog by inject(named("provideAlertDialog")) {
             parametersOf(
                 AlertDialogDTO(
                     title = title,
@@ -33,8 +33,8 @@ class SbcErrorHandler : KoinComponent {
         return alertDialog
     }
 
-    fun displayNetworkErrorDialog(): SbcAlertDialog {
-        val alertDialog: SbcAlertDialog by inject(named("provideAlertDialog")) {
+    fun displayNetworkErrorDialog(): AbtAlertDialog {
+        val alertDialog: AbtAlertDialog by inject(named("provideAlertDialog")) {
             parametersOf(
                 AlertDialogDTO(
                     title = "Network Error",
@@ -49,9 +49,9 @@ class SbcErrorHandler : KoinComponent {
         return alertDialog
     }
 
-    fun displayErrorDialogFromResponseBody(responseBody: ResponseBody?): SbcAlertDialog {
+    fun displayErrorDialogFromResponseBody(responseBody: ResponseBody?): AbtAlertDialog {
         val parsedResponse = responseBody?.let { parseErrorResponseBody(it) }
-        val alertDialog: SbcAlertDialog by inject(named("provideAlertDialog")) {
+        val alertDialog: AbtAlertDialog by inject(named("provideAlertDialog")) {
             parametersOf(
                 AlertDialogDTO(
                     title = parsedResponse?.errorTitle,
