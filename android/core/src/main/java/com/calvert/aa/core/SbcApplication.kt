@@ -10,7 +10,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import timber.log.Timber
 
-class SbcApplication: Application() {
+class AbtApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
@@ -24,7 +24,7 @@ class SbcApplication: Application() {
 
         startKoin {
             androidLogger(Level.ERROR)
-            androidContext(this@SbcApplication)
+            androidContext(this@AbtApplication)
             modules(listOf(retrofitModule, coreModule))
         }
     }

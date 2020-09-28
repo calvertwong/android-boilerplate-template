@@ -1,4 +1,4 @@
-package com.calvert.aa.simplebusinesscard.ui.slideshow
+package com.calvert.aa.androidboilerplatetemplate.ui.slideshow
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.calvert.aa.simplebusinesscard.R
+import com.calvert.aa.androidboilerplatetemplate.R
 
 class SlideshowFragment : Fragment() {
 

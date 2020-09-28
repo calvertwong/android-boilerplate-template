@@ -1,4 +1,4 @@
-package com.calvert.aa.simplebusinesscard.ui.debugdrawer
+package com.calvert.aa.androidboilerplatetemplate.ui.debugdrawer
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -11,8 +11,8 @@ import android.widget.ArrayAdapter
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.calvert.aa.core.CoreConstants
-import com.calvert.aa.simplebusinesscard.R
-import com.calvert.aa.simplebusinesscard.databinding.DdLayoutServerOptionBinding
+import com.calvert.aa.androidboilerplatetemplate.R
+import com.calvert.aa.androidboilerplatetemplate.databinding.DdLayoutServerOptionBinding
 import io.palaima.debugdrawer.base.DebugModuleAdapter
 import org.koin.core.KoinComponent
 import org.koin.core.inject

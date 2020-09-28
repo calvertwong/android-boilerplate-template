@@ -1,4 +1,4 @@
-package com.calvert.aa.simplebusinesscard.di
+package com.calvert.aa.androidboilerplatetemplate.di
 
 import org.koin.dsl.module
 

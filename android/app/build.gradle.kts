@@ -1,12 +1,41 @@
+import java.util.Properties
+import java.io.FileInputStream
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+private val keystorePropertiesFile: File = rootProject.file("keystore.properties")
+var keystoreProperties: Properties? = null
+
+if (keystorePropertiesFile.exists()) {
+    // Initialize a new Properties() object called keystoreProperties.
+    keystoreProperties = Properties()
+
+    // Load your keystore.properties file into the keystoreProperties object.
+    keystoreProperties?.load(FileInputStream(keystorePropertiesFile))
+}
+
 android {
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+    keystoreProperties?.let {
+        signingConfigs {
+            register("release") {
+                keyAlias = keystoreProperties?.get("keyAlias") as String
+                keyPassword = keystoreProperties?.get("keyPassword") as String
+                storeFile = file(keystoreProperties?.get("storeFile") as String)
+                storePassword = keystoreProperties?.get("storePassword") as String
+            }
+        }
+
+        buildTypes {
+            getByName("release") {
+                isMinifyEnabled = true
+                isShrinkResources = true
+                signingConfig = signingConfigs.getByName("release")
+                proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            }
         }
     }
 }
+
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))

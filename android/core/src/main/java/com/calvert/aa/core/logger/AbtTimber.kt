@@ -2,7 +2,7 @@ package com.calvert.aa.core.logger
 
 import timber.log.Timber
 
-object SbcTimber {
+object AbtTimber {
     fun v(msg: String) {
         Timber.v(msg)
     }
