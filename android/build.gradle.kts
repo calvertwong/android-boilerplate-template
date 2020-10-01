@@ -108,7 +108,7 @@ fun Project.configureCommon(name: String) {
         if (viewBindingModules.contains(name)) {
             buildFeatures.viewBinding = true
         }
-        if (viewBindingModules.contains(name)) {
+        if (dataBindingModules.contains(name)) {
             buildFeatures.dataBinding = true
         }
         testOptions {
